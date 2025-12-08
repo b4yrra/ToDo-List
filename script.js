@@ -1,6 +1,7 @@
 const addElement = document.getElementById("addBtn");
 const input = document.getElementById("input");
 const lists = document.getElementById("listText");
+const deleteBtn = document.querySelector(".task__delete");
 
 let tasks = [];
 let taskId = 1;
@@ -37,11 +38,11 @@ const renderTasks = () => {
 };
 
 const createTaskElement = (task) => {
-  return `<div class="task">
+  return `<div class="task"><div class="task_title">
         <input type="checkbox" name="checkbox" class="task__checkbox" ${
           task.isComplete && "checked"
         }/>
-        <p class="task__checkbox">${task.text}</p>
+        <p class="task__text">${task.text}</p></div>
         <button class="task__delete">Delete</button></div>`;
 };
 
@@ -50,3 +51,7 @@ const clearInput = () => {
 };
 
 addElement.addEventListener("click", add);
+
+deleteBtn.onclick = () => {
+  e.target.closest(".task__delete") && e.target.closest(".task").remove();
+};
