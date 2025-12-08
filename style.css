@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 377px;
+  height: 290px;
+  border-radius: 6px;
+  padding-top: 24px;
+  padding-right: 16px;
+  padding-bottom: 24px;
+  padding-left: 16px;
+  gap: 40px;
+  background-color: white;
+}
+
+.list-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task__checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  border-width: 1px;
+  border-color: #767676;
+}
+
+.task__delete {
+  width: 67px;
+  height: 30px;
+  border-radius: 6px;
+  padding-top: 6px;
+  padding-right: 12px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  gap: 10px;
+  background-color: #fef2f2;
+  border: none;
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ef4444;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  font-family: Inter;
+  font-weight: 600;
+  font-style: Semi Bold;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -2.5%;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#input {
+  width: 280px;
+  height: 40px;
+  border-radius: 6px;
+  border-width: 1px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+}
+
+#addBtn {
+  width: 59px;
+  height: 40px;
+  border-radius: 6px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  gap: 10px;
+  background-color: #3c82f6;
+  color: white;
+  border: none;
+}
