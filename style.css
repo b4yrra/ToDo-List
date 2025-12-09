@@ -69,6 +69,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.task__delete:hover {
+  cursor: pointer;
+  background-color: #f3b8b8;
+  transition: all 1s ease;
+}
+
 .title {
   font-family: Inter;
   font-weight: 600;
@@ -90,7 +96,10 @@ body {
   padding-bottom: 8px;
   padding-left: 16px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  transition: all 0.5s;
+}
+
+#input:focus {
+  border: 1px solid #2463eb;
 }
 
 #addBtn {
@@ -105,6 +114,13 @@ body {
   background-color: #3c82f6;
   color: white;
   border: none;
+}
+
+#addBtn:hover {
+  background-color: #0862f3;
+  cursor: pointer;
+  transition: all 1s ease;
+  transform: scaleX(1.1);
 }
 
 .task {
@@ -181,4 +197,40 @@ body {
   line-height: 100%;
   letter-spacing: 0%;
   text-decoration: none;
+}
+
+.btn--section {
+  display: flex;
+  width: 345px;
+  height: 32px;
+  gap: 6px;
+}
+
+.buttons {
+  border-radius: 6px;
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  background-color: #f3f4f6;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #363636;
+  cursor: pointer;
+}
+
+.buttons.active {
+  background-color: #3c82f6;
+  color: white;
+  transition: all 0.5s;
+}
+
+.task__text.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
