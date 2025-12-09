@@ -120,7 +120,6 @@ body {
   background-color: #0862f3;
   cursor: pointer;
   transition: all 1s ease;
-  transform: scaleX(1.1);
 }
 
 .task {

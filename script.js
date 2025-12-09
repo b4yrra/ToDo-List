@@ -3,14 +3,10 @@ const input = document.getElementById("input");
 const lists = document.getElementById("listText");
 const deleteBtn = document.querySelector(".task__delete");
 const allButtons = document.querySelectorAll(".buttons");
-const taskCheckbox = document.querySelector(".task__checkbox");
-const taskText = document.querySelector(".task__text");
-const all = document.getElementById("allBtn");
-const active = document.getElementById("activeBtn");
-const complete = document.getElementById("completeBtn");
 
 let tasks = [];
 let taskId = 1;
+let currentFilter = "all";
 
 const add = () => {
   const todoText = input.value;
@@ -41,7 +37,15 @@ const add = () => {
 const renderTasks = () => {
   let taskElementHTML = "";
 
-  tasks.forEach((task) => {
+  let filteredTasks = tasks;
+
+  if (currentFilter === "active") {
+    filteredTasks = tasks.filter((task) => !task.isComplete);
+  } else if (currentFilter === "complete") {
+    filteredTasks = tasks.filter((task) => task.isComplete);
+  }
+
+  filteredTasks.forEach((task) => {
     const taskELement = createTaskElement(task);
 
     taskElementHTML += taskELement;
@@ -62,39 +66,60 @@ allButtons.forEach((currentButton) => {
       btn.classList.remove("active");
     });
     this.classList.add("active");
+
+    if (this.id === "allBtn") {
+      currentFilter = "all";
+    } else if (this.id === "activeBtn") {
+      currentFilter = "active";
+    } else if (this.id === "completeBtn") {
+      currentFilter = "complete";
+    }
+
+    renderTasks();
   });
 });
 
 const createTaskElement = (task) => {
-  const checkedAttr = task.isComplete ? "checked" : "";
-  const strikeStyle = task.isComplete ? "text-decoration: line-through;" : "";
+  const textStyle = task.isComplete
+    ? 'style="text-decoration: line-through;"'
+    : "";
+  const checked = task.isComplete ? "checked" : "";
 
   return `<div class="task"><div class="task_title">
-        <input type="checkbox" name="checkbox" class="task__checkbox" onclick="window.toggleTask(${
-          task.id
-        })" ${checkedAttr}" ${task.isComplete && "checked"}/>
-        <p class="task__text" style="${strikeStyle}">${task.text}</p></div>
-        <button class="task__delete" onclick="removeTask(${
-          task.id
-        })">Delete</button></div>`;
+        <input type="checkbox" name="checkbox" class="task__checkbox" ${checked} onclick="checkBtn(${task.id})"/>
+        <p class="task__text" ${textStyle}>${task.text}</p></div>
+        <button class="task__delete" onclick="deleteTask(${task.id})">Delete</button></div>`;
 };
 
 const clearInput = () => {
   input.value = "";
 };
 
-window.toggleTask = function (taskId) {
-  const task = tasks.find((t) => t.id === taskId);
-  if (task) {
-    task.isComplete = !task.isComplete;
-    renderTasks();
-  }
+const deleteTask = (taskId) => {
+  updateDeletedTask = tasks.filter((task) => {
+    if (task.id === taskId) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  tasks = updateDeletedTask;
+
+  renderTasks();
 };
 
-function removeTask(removeTasks) {
-  tasks = tasks.filter((task) => task.id !== removeTasks);
+const checkBtn = (taskId) => {
+  checkedTask = tasks.map((task) => {
+    if (task.id === taskId) {
+      task.isComplete = !task.isComplete;
+    }
+
+    return task;
+  });
+
   renderTasks();
-}
+};
 
 addElement.addEventListener("click", add);
 
