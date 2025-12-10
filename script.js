@@ -3,6 +3,7 @@ const input = document.getElementById("input");
 const lists = document.getElementById("listText");
 const deleteBtn = document.querySelector(".task__delete");
 const allButtons = document.querySelectorAll(".buttons");
+const counter = document.getElementById("completedTask");
 
 let tasks = [];
 let taskId = 1;
@@ -119,6 +120,12 @@ const checkBtn = (taskId) => {
   });
 
   renderTasks();
+};
+
+const countComplete = (task) => {
+  if (task.isComplete === true) {
+    return (counter.innerHTML = "asdasdad");
+  }
 };
 
 addElement.addEventListener("click", add);
