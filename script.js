@@ -59,6 +59,8 @@ const renderTasks = () => {
   if (taskElementHTML === "") {
     return (lists.innerHTML = "No tasks yet. Add one above!");
   }
+
+  updateCounter();
 };
 
 allButtons.forEach((currentButton) => {
@@ -108,6 +110,7 @@ const deleteTask = (taskId) => {
   tasks = updateDeletedTask;
 
   renderTasks();
+  updateCounter();
 };
 
 const checkBtn = (taskId) => {
@@ -120,11 +123,17 @@ const checkBtn = (taskId) => {
   });
 
   renderTasks();
+  updateCounter();
 };
 
-const countComplete = (task) => {
-  if (task.isComplete === true) {
-    return (counter.innerHTML = "asdasdad");
+const updateCounter = () => {
+  const completedCount = tasks.filter((task) => task.isComplete).length;
+  const totalCount = tasks.length;
+
+  if (totalCount === 0) {
+    return null;
+  } else {
+    return (counter.innerHTML = `${completedCount} of ${totalCount} tasks completed`);
   }
 };
 
