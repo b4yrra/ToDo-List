@@ -233,3 +233,31 @@ body {
   text-decoration: line-through;
   opacity: 0.6;
 }
+
+.complete--value {
+  display: none;
+  justify-content: space-between;
+}
+
+.completed--task {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #6b7280;
+}
+
+#clearComp {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ef4444;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

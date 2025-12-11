@@ -4,6 +4,8 @@ const lists = document.getElementById("listText");
 const deleteBtn = document.querySelector(".task__delete");
 const allButtons = document.querySelectorAll(".buttons");
 const counter = document.getElementById("completedTask");
+const countFooter = document.querySelector(".complete--value");
+const clearComp = document.getElementById("clearComp");
 
 let tasks = [];
 let taskId = 1;
@@ -24,6 +26,7 @@ const add = () => {
   }
 
   if (todoText === "") {
+    window.alert("Please Enter Your Task.");
     return null;
   } else {
     tasks.push(task);
@@ -98,21 +101,6 @@ const clearInput = () => {
   input.value = "";
 };
 
-const deleteTask = (taskId) => {
-  updateDeletedTask = tasks.filter((task) => {
-    if (task.id === taskId) {
-      return false;
-    } else {
-      return true;
-    }
-  });
-
-  tasks = updateDeletedTask;
-
-  renderTasks();
-  updateCounter();
-};
-
 const checkBtn = (taskId) => {
   checkedTask = tasks.map((task) => {
     if (task.id === taskId) {
@@ -123,7 +111,20 @@ const checkBtn = (taskId) => {
   });
 
   renderTasks();
+};
+
+const deleteTask = (taskId) => {
+  updateDeletedTask = tasks.filter((task) => {
+    if (task.id === taskId) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  tasks = updateDeletedTask;
   updateCounter();
+  renderTasks();
 };
 
 const updateCounter = () => {
@@ -131,10 +132,18 @@ const updateCounter = () => {
   const totalCount = tasks.length;
 
   if (totalCount === 0) {
-    return null;
+    countFooter.style.display = "none";
   } else {
-    return (counter.innerHTML = `${completedCount} of ${totalCount} tasks completed`);
+    counter.innerHTML = `${completedCount} of ${totalCount} tasks completed`;
+    countFooter.style.display = "flex";
   }
+};
+
+const clearComplete = () => {
+  completedTask = tasks.filter((task) => task.isComplete === false);
+
+  renderTasks(completedTask);
+  updateCounter();
 };
 
 addElement.addEventListener("click", add);
