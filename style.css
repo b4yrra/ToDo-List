@@ -237,6 +237,8 @@ body {
 .complete--value {
   display: none;
   justify-content: space-between;
+  border-top: 1px solid #6b728045;
+  padding-top: 20px;
 }
 
 .completed--task {

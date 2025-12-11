@@ -114,6 +114,10 @@ const checkBtn = (taskId) => {
 };
 
 const deleteTask = (taskId) => {
+  if (!window.confirm("Are you sure you want to delete this task?")) {
+    return;
+  }
+
   updateDeletedTask = tasks.filter((task) => {
     if (task.id === taskId) {
       return false;
@@ -140,9 +144,13 @@ const updateCounter = () => {
 };
 
 const clearComplete = () => {
-  completedTask = tasks.filter((task) => task.isComplete === false);
+  if (!window.confirm("Are you sure you want to clear all completed tasks?")) {
+    return;
+  }
 
-  renderTasks(completedTask);
+  tasks = tasks.filter((task) => task.isComplete === false);
+
+  renderTasks();
   updateCounter();
 };
 
